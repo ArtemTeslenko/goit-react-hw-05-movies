@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 export const HeaderBox = styled.header`
   padding: 20px;
-  margin-bottom: 10px;
   box-shadow: 0px 5px 10px -10px rgba(0, 0, 0, 0.75);
 `;
 

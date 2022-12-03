@@ -1,5 +1,6 @@
 import { MoviesBox } from './Movies.styled';
 import { SearchForm } from 'components/Search';
+import { Outlet } from 'react-router-dom';
 
 export const Movies = () => {
   const onFormSubmit = e => {
@@ -8,6 +9,7 @@ export const Movies = () => {
   return (
     <MoviesBox>
       <SearchForm onFormSubmit={onFormSubmit} />
+      <Outlet />
     </MoviesBox>
   );
 };
