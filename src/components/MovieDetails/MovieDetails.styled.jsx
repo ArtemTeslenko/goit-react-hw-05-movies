@@ -5,6 +5,12 @@ export const MainInfoBox = styled.div`
   display: flex;
 `;
 
+export const Button = styled.button`
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+`;
+
 export const Poster = styled.img`
   display: block;
   width: 250px;
