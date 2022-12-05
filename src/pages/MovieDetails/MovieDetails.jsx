@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { BsArrowLeft } from 'react-icons/bs';
-import { MainInfo } from '../../components/MovieDetails';
+import { MainInfo, AdditionalInfo } from '../../components/MovieDetails';
 import { MoviesBox } from '../Movies/Movies.styled';
-import { Button } from '../../components/MovieDetails/MovieDetails.styled';
-import { AdditionalInfo } from '../../components/MovieDetails';
+import {
+  Button,
+  GoBack,
+} from '../../components/MovieDetails/MovieDetails.styled';
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
@@ -27,7 +29,9 @@ export const MovieDetails = () => {
       {movie && (
         <div>
           <Button type="button">
-            <BsArrowLeft /> Go back
+            <GoBack to={'/'}>
+              <BsArrowLeft /> Go back
+            </GoBack>
           </Button>
           <MainInfo
             posterSrc={`https://www.themoviedb.org/t/p/w300${movie.poster_path}`}
@@ -40,7 +44,7 @@ export const MovieDetails = () => {
           <hr />
           <AdditionalInfo />
           <hr />
-          {/* <Outlet /> */}
+          <Outlet />
         </div>
       )}
     </MoviesBox>

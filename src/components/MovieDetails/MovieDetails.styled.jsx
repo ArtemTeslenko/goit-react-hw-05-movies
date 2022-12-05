@@ -6,8 +6,6 @@ export const MainInfoBox = styled.div`
 `;
 
 export const Button = styled.button`
-  display: flex;
-  align-items: center;
   margin-bottom: 10px;
 `;
 
@@ -24,11 +22,34 @@ export const MainInfoData = styled.div`
 `;
 
 export const TextElement = styled.p`
-  margin: 0 0 10px 0;
+  margin-top: 0;
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
 `;
 
 export const InfoNav = styled.ul`
   margin: 0;
 `;
 
+export const Item = styled.li`
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+`;
+
 export const AdditionalItem = styled(NavLink)``;
+
+export const GoBack = styled(NavLink)`
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: #000000;
+`;
+
+export const Photo = styled.img`
+  display: block;
+  width: 120px;
+  height: 100%;
+  margin-bottom: 10px;
+`;
