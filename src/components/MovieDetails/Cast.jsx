@@ -15,8 +15,6 @@ export const Cast = () => {
       .then(({ data }) => setMovie(data.cast));
   }, [movieId]);
 
-  //   console.log(movie);
-
   if (!movie) {
     return;
   }
@@ -27,7 +25,11 @@ export const Cast = () => {
         {movie.map(({ id, profile_path, name, character }) => (
           <Item key={id}>
             <Photo
-              src={`https://www.themoviedb.org/t/p/w200${profile_path}`}
+              src={
+                profile_path
+                  ? `https://www.themoviedb.org/t/p/w200${profile_path}`
+                  : 'https://149645218.v2.pressablecdn.com/wp-content/uploads/2020/10/u8wSHMmMMXzZuAFBCmcsCK-1200x900.jpg'
+              }
               alt={name}
             />
             <TextElement>{name}</TextElement>
@@ -38,5 +40,3 @@ export const Cast = () => {
     </>
   );
 };
-
-console.log("fix 404 when photo doesn't come 🦄🦄🦄");
