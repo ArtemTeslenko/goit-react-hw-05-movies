@@ -1,9 +1,21 @@
+import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
 import { Home } from '../pages/Home';
-import { Movies } from '../pages/Movies';
-import { MovieDetails } from '../pages/MovieDetails';
 import { Cast, Reviews } from './MovieDetails';
+
+const Movies = lazy(() =>
+  import('../pages/Movies').then(module => ({
+    ...module,
+    default: module.Movies,
+  }))
+);
+const MovieDetails = lazy(() =>
+  import('../pages/MovieDetails').then(module => ({
+    ...module,
+    default: module.MovieDetails,
+  }))
+);
 
 export const App = () => {
   return (

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Outlet, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { BsArrowLeft } from 'react-icons/bs';
 import { MainInfo, AdditionalInfo } from '../../components/MovieDetails';
@@ -10,6 +10,7 @@ import {
 } from '../../components/MovieDetails/MovieDetails.styled';
 
 export const MovieDetails = () => {
+  const location = useLocation();
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
 
@@ -23,13 +24,14 @@ export const MovieDetails = () => {
       });
   }, [movieId]);
 
-  //   console.log(movie);
+  const backPath = location.state?.from ?? '/';
+
   return (
     <MoviesBox>
       {movie && (
         <div>
           <Button type="button">
-            <GoBack to={'/'}>
+            <GoBack to={backPath}>
               <BsArrowLeft /> Go back
             </GoBack>
           </Button>

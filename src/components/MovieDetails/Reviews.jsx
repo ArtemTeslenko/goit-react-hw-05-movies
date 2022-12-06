@@ -16,7 +16,7 @@ export const Reviews = () => {
   }, [movieId]);
 
   if (!movie) {
-    return <p>qwe</p>;
+    return;
   }
 
   if (movie.length < 1) {
@@ -40,5 +40,3 @@ export const Reviews = () => {
     </>
   );
 };
-
-console.log('to solve: blaming of text in case of movie.length < 1');
