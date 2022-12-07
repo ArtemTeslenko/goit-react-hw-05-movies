@@ -1,12 +1,12 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const HeaderBox = styled.header`
+const HeaderBox = styled.header`
   padding: 20px;
   box-shadow: 0px 5px 10px -10px rgba(0, 0, 0, 0.75);
 `;
 
-export const NavItem = styled(NavLink)`
+const NavItem = styled(NavLink)`
   padding: 5px;
   font-size: 18px;
   text-decoration: none;
@@ -25,3 +25,5 @@ export const NavItem = styled(NavLink)`
     text-decoration: underline;
   }
 `;
+
+export { HeaderBox, NavItem };

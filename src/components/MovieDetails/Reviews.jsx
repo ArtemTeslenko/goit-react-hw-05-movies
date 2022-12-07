@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { COMMON_URL, KEY } from 'components/Utils';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Item, TextElement } from './MovieDetails.styled';
@@ -10,7 +11,7 @@ export const Reviews = () => {
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=894ef72300682f1db325dae2afe3e7e2&language=en-US&page=1`
+        `${COMMON_URL}${movieId}/reviews?api_key=${KEY}&language=en-US&page=1`
       )
       .then(({ data }) => setMovie(data.results));
   }, [movieId]);

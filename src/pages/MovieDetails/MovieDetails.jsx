@@ -8,6 +8,7 @@ import {
   Button,
   GoBack,
 } from '../../components/MovieDetails/MovieDetails.styled';
+import { COMMON_URL, IMG_PATH, KEY } from 'components/Utils';
 
 export const MovieDetails = () => {
   const location = useLocation();
@@ -15,13 +16,9 @@ export const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/movie/${movieId}?api_key=894ef72300682f1db325dae2afe3e7e2`
-      )
-      .then(resp => {
-        return setMovie(resp.data);
-      });
+    axios.get(`${COMMON_URL}${movieId}?api_key=${KEY}`).then(resp => {
+      return setMovie(resp.data);
+    });
   }, [movieId]);
 
   const backPath = location.state?.from ?? '/';
@@ -36,7 +33,7 @@ export const MovieDetails = () => {
             </GoBack>
           </Button>
           <MainInfo
-            posterSrc={`https://www.themoviedb.org/t/p/w300${movie.poster_path}`}
+            posterSrc={`${IMG_PATH}w300${movie.poster_path}`}
             title={movie.original_title}
             releaseDate={new Date(movie.release_date).getFullYear()}
             vote_average={Math.round(movie.vote_average * 10)}

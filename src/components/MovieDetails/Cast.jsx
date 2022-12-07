@@ -1,7 +1,11 @@
 import axios from 'axios';
+import { COMMON_URL, IMG_PATH, KEY } from 'components/Utils';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Item, Photo, TextElement } from './MovieDetails.styled';
+
+const defaultImg =
+  'https://149645218.v2.pressablecdn.com/wp-content/uploads/2020/10/u8wSHMmMMXzZuAFBCmcsCK-1200x900.jpg';
 
 export const Cast = () => {
   const { movieId } = useParams();
@@ -9,9 +13,7 @@ export const Cast = () => {
 
   useEffect(() => {
     axios
-      .get(
-        `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=894ef72300682f1db325dae2afe3e7e2&language=en-US`
-      )
+      .get(`${COMMON_URL}${movieId}/credits?api_key=${KEY}&language=en-US`)
       .then(({ data }) => setMovie(data.cast));
   }, [movieId]);
 
@@ -27,8 +29,8 @@ export const Cast = () => {
             <Photo
               src={
                 profile_path
-                  ? `https://www.themoviedb.org/t/p/w200${profile_path}`
-                  : 'https://149645218.v2.pressablecdn.com/wp-content/uploads/2020/10/u8wSHMmMMXzZuAFBCmcsCK-1200x900.jpg'
+                  ? `${IMG_PATH}w200${profile_path}`
+                  : `${defaultImg}`
               }
               alt={name}
             />

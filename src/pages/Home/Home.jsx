@@ -8,6 +8,7 @@ import {
   PageTitle,
   Section,
 } from './Home.styled';
+import { KEY } from 'components/Utils';
 
 export const Home = () => {
   const location = useLocation();
@@ -16,7 +17,7 @@ export const Home = () => {
   useEffect(() => {
     axios
       .get(
-        'https://api.themoviedb.org/3/trending/movie/week?api_key=894ef72300682f1db325dae2afe3e7e2&page=1'
+        `https://api.themoviedb.org/3/trending/movie/week?api_key=${KEY}&page=1`
       )
       .then(resp => setMovies(resp.data.results));
   }, []);
@@ -24,15 +25,17 @@ export const Home = () => {
   return (
     <Section>
       <PageTitle>Trending today</PageTitle>
-      <MovieList>
-        {movies.map(({ id, title }) => (
-          <MovieItem key={id}>
-            <MovieLink to={`movies/${id}`} state={{ from: location }}>
-              {title}
-            </MovieLink>
-          </MovieItem>
-        ))}
-      </MovieList>
+      {movies.length > 0 && (
+        <MovieList>
+          {movies.map(({ id, title }) => (
+            <MovieItem key={id}>
+              <MovieLink to={`movies/${id}`} state={{ from: location }}>
+                {title}
+              </MovieLink>
+            </MovieItem>
+          ))}
+        </MovieList>
+      )}
     </Section>
   );
 };
