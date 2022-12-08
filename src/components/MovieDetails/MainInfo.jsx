@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import {
   MainInfoBox,
   MainInfoData,
@@ -28,4 +29,13 @@ export const MainInfo = ({
       </MainInfoData>
     </MainInfoBox>
   );
+};
+
+MainInfo.propTypes = {
+  genres: PropTypes.arrayOf(PropTypes.object),
+  overview: PropTypes.string.isRequired,
+  posterSrc: PropTypes.string.isRequired,
+  releaseDate: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  vote_average: PropTypes.number.isRequired,
 };

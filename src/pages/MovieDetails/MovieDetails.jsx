@@ -41,7 +41,7 @@ export const MovieDetails = () => {
             genres={movie.genres}
           />
           <hr />
-          <AdditionalInfo />
+          <AdditionalInfo back={backPath} />
           <hr />
           <Outlet />
         </div>

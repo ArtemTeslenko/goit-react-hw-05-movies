@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { COMMON_URL, IMG_PATH, KEY } from 'components/Utils';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { COMMON_URL, IMG_PATH, KEY } from 'components/Utils';
 import { Item, Photo, TextElement } from './MovieDetails.styled';
 
 const defaultImg =

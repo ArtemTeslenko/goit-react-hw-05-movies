@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Form, SearchInput, SearchBtn } from './SearchForm.styled';
 
 export const SearchForm = ({ onFormSubmit }) => {
@@ -7,4 +8,8 @@ export const SearchForm = ({ onFormSubmit }) => {
       <SearchBtn type="submit">Search</SearchBtn>
     </Form>
   );
+};
+
+SearchForm.propTypes = {
+  onFormSubmit: PropTypes.func.isRequired,
 };

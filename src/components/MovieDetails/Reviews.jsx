@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { COMMON_URL, KEY } from 'components/Utils';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { COMMON_URL, KEY } from 'components/Utils';
 import { Item, TextElement } from './MovieDetails.styled';
 
 export const Reviews = () => {
