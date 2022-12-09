@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { BsArrowLeft } from 'react-icons/bs';
+import toast from 'react-hot-toast';
 import { MainInfo, AdditionalInfo } from '../../components/MovieDetails';
 import { MoviesBox } from '../Movies/Movies.styled';
 import {
@@ -14,17 +15,24 @@ export const MovieDetails = () => {
   const location = useLocation();
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    axios.get(`${COMMON_URL}${movieId}?api_key=${KEY}`).then(resp => {
-      return setMovie(resp.data);
-    });
+    setIsLoading(true);
+    axios
+      .get(`${COMMON_URL}${movieId}?api_key=${KEY}`)
+      .then(resp => {
+        return setMovie(resp.data);
+      })
+      .catch(() => toast('Something went wrong please try again 🐝'))
+      .finally(setIsLoading(false));
   }, [movieId]);
 
   const backPath = location.state?.from ?? '/';
 
   return (
     <MoviesBox>
+      {isLoading && <h1>Loading...</h1>}
       {movie && (
         <div>
           <Button type="button">

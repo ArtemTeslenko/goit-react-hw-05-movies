@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
 import { Home } from '../pages/Home';
 import { Cast, Reviews } from './MovieDetails';
+import { Toaster } from 'react-hot-toast';
 
 const Movies = lazy(() =>
   import('../pages/Movies').then(module => ({
@@ -30,6 +31,7 @@ export const App = () => {
           </Route>
         </Route>
       </Routes>
+      <Toaster />
     </div>
   );
 };

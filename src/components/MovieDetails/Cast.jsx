@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import toast from 'react-hot-toast';
 import { COMMON_URL, IMG_PATH, KEY } from 'components/Utils';
 import { Item, Photo, TextElement } from './MovieDetails.styled';
 
@@ -10,11 +11,15 @@ const defaultImg =
 export const Cast = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     axios
       .get(`${COMMON_URL}${movieId}/credits?api_key=${KEY}&language=en-US`)
-      .then(({ data }) => setMovie(data.cast));
+      .then(({ data }) => setMovie(data.cast))
+      .catch(() => toast('Something went wrong please try again 🐝'))
+      .finally(setIsLoading(false));
   }, [movieId]);
 
   if (!movie) {
@@ -23,6 +28,7 @@ export const Cast = () => {
 
   return (
     <>
+      {isLoading && <h1>Loading...</h1>}
       <ul>
         {movie.map(({ id, profile_path, name, character }) => (
           <Item key={id}>
